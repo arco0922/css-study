@@ -8,7 +8,7 @@
 
 HTML5のタグには大きく分けて7つの種類があり，コンテンツモデルと言われている．詳細は[こちら](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)などを参照してほしいが，CSSを作るうえで大事になってくるのは
 
-- Flow Content (フローコンテンツ) : <body>タグ内で使用できる要素全体
+- Flow Content (フローコンテンツ) : ```<body>```タグ内で使用できる要素全体
 - Phrasing Content (記述コンテンツ) : 文章とその中に含まれる要素全体
 - Embedded Content (埋め込みコンテンツ) : 外部リソースを埋め込んで表示する要素全体
 
