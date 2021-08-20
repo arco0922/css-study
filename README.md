@@ -17,7 +17,7 @@ HTML5のタグには大きく分けて7つの種類があり，コンテンツ�
 CSSを考える上で何故これが重要になるかというと，各タグがこの3つのどこに所属するかによって，その要素のデフォルトのdisplay属性が異なっているからである．
 
 - Flow には属するが，Phrasing には属さない： ```div, h1 ~ h6, p, ul, header, footer, form``` → デフォルトは ```display : block```
-- Phrasingには属するが，Embeddedには属さない： ```a, button, input, textarea``` → デフォルトは ```display : inline```
+- Phrasingには属するが，Embeddedには属さない： ```span, a, button, input, textarea``` → デフォルトは ```display : inline```
 - Embeddedに属する： ```img, video, audio, iframe, canvas``` → デフォルトは ```display : inline-block```
   
 以上の分類は非常に大事なので，是非頭の片隅に入れておいてもらいたい．
