@@ -1,4 +1,4 @@
-# CSSを学ぶ
+# HTMLとCSSを学ぶ
 
 ## コンテンツモデル
 
@@ -6,12 +6,12 @@
 
 ※[引用元](https://webgoto.net/html5/) ※[詳細参考url](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)
 
-HTML5のタグには大きく分けて7つの種類があり，コンテンツモデルと言われている．詳細は[こちら](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)などを参照してほしいが，CSSを作るうえで大事になってくるのは
+HTML5のタグには大きく分けて7つの種類があり，コンテンツモデルと言われている．詳細は[こちら](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)などを参照してほしい．
 
 - Flow Content (フローコンテンツ) : ```<body>```タグ内で使用できる要素全体．
-  - 主に区切りコンテンツ，見出しコンテンツ，記述コンテンツなどを含む．
-- Phrasing Content (記述コンテンツ) : 文章とその中に含まれる要素全体．
-  - 主にテキストレベルのセマンティクスのマークアップや，埋め込みコンテンツなどを含む．
+  - 主に，文や要素のかたまりを表す要素```p, div, ul, form, header, footer, section```，見出しを表す要素```h1 ~ h6```，中身を記述する要素(次の「記述コンテンツ」)を含む．
+- Phrasing Content (記述コンテンツ) : 文章や，その中に含まれる要素全体．
+  - 主に，テキスト自身，テキストレベルのセマンティクスを表す要素```a, b, br, span```や，フォームを中身を構成する要素```input, button, textarea```，外部リソースを表示する要素(次の)などを含む．
 - Embedded Content (埋め込みコンテンツ) : 外部リソースを埋め込んで表示する要素全体．
   - 主に画像や動画，音楽などを含む．
 
