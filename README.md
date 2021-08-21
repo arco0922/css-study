@@ -8,9 +8,9 @@
 
 HTML5のタグには大きく分けて7つの種類があり，コンテンツモデルと言われている．詳細は[こちら](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)などを参照してほしいが，CSSを作るうえで大事になってくるのは
 
-- Flow Content (フローコンテンツ) : ```<body>```タグ内で使用できる要素全体
-- Phrasing Content (記述コンテンツ) : 文章とその中に含まれる要素全体
-- Embedded Content (埋め込みコンテンツ) : 外部リソースを埋め込んで表示する要素全体
+- Flow Content (フローコンテンツ) : ```<body>```タグ内で使用できる要素全体．主に区切りコンテンツ，見出しコンテンツ，記述コンテンツなどを含む．
+- Phrasing Content (記述コンテンツ) : 文章とその中に含まれる要素全体．主にテキストレベルのセマンティクスのマークアップや，埋め込みコンテンツなどを含む．
+- Embedded Content (埋め込みコンテンツ) : 外部リソースを埋め込んで表示する要素全体．主に画像や動画，音楽などを含む．
 
 の3つである．注意すべきなのは，集合の包含関係としては，```Flow Content ⊃ Phrasing Content ⊃ Embedded Content``` になっているということである．
 
