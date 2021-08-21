@@ -2,35 +2,54 @@
 
 ## コンテンツモデル
 
-![contentsmodel](https://user-images.githubusercontent.com/52741042/130260672-11fe41ee-6911-4c3f-bac0-d063d9bde25e.PNG)
+　スタイリングについて説明する前に，まずはhtmlについて簡単に説明する．htmlは，その名の通りmarkup languageであり，「タグ」によって文字列を囲うことで意味(セマンティクス)付けを行う．
 
-※[引用元](https://webgoto.net/html5/) ※[詳細参考url](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)
+　タグは，その意味付けに合わせて大きく7つほどに分類することができ，それらの相互の関係を定義した「コンテンツモデル」というルールがある．以下の画像もそこからとったものであはあるが，[こちらのページ](https://webgoto.net/html5/)や，[こちらのページ](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)に詳しく書かれている．各要素について，親要素に持てる要素，子要素に持てる要素が明確に定められている．
 
-HTML5のタグには大きく分けて7つの種類があり，コンテンツモデルと言われている．詳細は[こちら](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories)などを参照してほしい．
+![contentsmodel](https://user-images.githubusercontent.com/52741042/130260672-11fe41ee-6911-4c3f-bac0-d063d9bde25e.PNG)※引用元は[こちら](https://webgoto.net/html5/)
+
+　各要素についてのルールはあくまでhtmlを書くうえでの作法であり，あまりスタイリングには関係してこないので気になる方は詳細はリンク先を参照して頂きたいが，ここではスタイリングにも関係してくる概念である，Flow ContentとPhrasing Contentの2つを紹介する．
 
 - Flow Content (フローコンテンツ) : ```<body>```タグ内で使用できる要素全体．
-  - 主に，文や要素のかたまりを表す要素```p, div, ul, form, header, footer, section```，見出しを表す要素```h1 ~ h6```，中身を記述する要素(次の「記述コンテンツ」)を含む．
+  - セクションをマークアップするSectioning Content (```section, nav``` など) ，セクションの見出しをマークアップするHeading Content (```h1 ~ h6```) ，中身の記述をマークアップするPhrasing Content (次項目参照) , そしてその他段落などの文や要素のまとまりを表すタグ全体 (```div, p, ol, ul, form, table, header, footer```など) がこれに所属する
+
 - Phrasing Content (記述コンテンツ) : 文章や，その中に含まれる要素全体．
-  - 主に，テキスト自身，テキストレベルのセマンティクスを表す要素```a, b, br, span```や，フォームを中身を構成する要素```input, button, textarea```，外部リソースを表示する要素(次の)などを含む．
-- Embedded Content (埋め込みコンテンツ) : 外部リソースを埋め込んで表示する要素全体．
-  - 主に画像や動画，音楽などを含む．
+  - 主に，テキスト自身，テキストレベルのセマンティクスを表す要素 (```a, b, br, span```など) や，フォームを中身を構成する要素 (```input, button, textarea```など)，外部リソースなどの埋め込み要素を表示するEmbedded Content (```img, video, audio, canvas, iframe```など) がこれに所属する．
 
-の3つである．注意すべきなのは，集合の包含関係としては，```Flow Content ⊃ Phrasing Content ⊃ Embedded Content``` になっているということである．
+　いくつか例外があるものの，親子関係の基本的なルールとしては，```Flow Content```の子供は```Flow Content```, ```Phrasing Content```の子供は```Phrasing Content```と定まっている．したがって，例えば，```a```タグ (Phrasing Content) の中に，```p```タグ (Phrasing Contentではない) を入れたりすることはルールに反している．勿論，そのように記述したとしてもエラーを吐いたりすることはないが，レイアウトがおかしくなってしまうことが多く，推奨できない．※なぜレイアウトがおかしくなることが多いかはこのReadmeを最後まで読んでいただければ必ず理解できると思う．
 
-CSSを考える上で何故これが重要になるかというと，各タグがこの3つのどこに所属するかによって，その要素のデフォルトのdisplay属性が異なっているからである．
+　また，htmlはあくまで文字列に「意味付け」を行うものであり，各タグ自体にスタイリング的な意味はないということに注意しておく．例えば，h1タグを「文字を太字にして大きくするタグ」と勘違いしてはいけないし，bタグを「文字を太字にするタグ」と勘違いするべきではないということである．h1タグは，あくまで「セクションの見出しという意味付けを与えている」だけだし，bタグは，「注目してほしい語句という意味付けを与えている」だけである．
 
-- Flow には属するが，Phrasing には属さない： ```div, h1 ~ h6, p, ul, section, header, footer, form``` 
-  - デフォルトは ```display : block```
-- Phrasingには属するが，Embeddedには属さない： ```span, a, b, button, input, textarea``` 
-  - デフォルトは ```display : inline```
-- Embeddedに属する： ```img, video, audio, iframe, canvas```
-  - デフォルトは ```display : inline-block```
-  
-以上の分類は非常に大事なので，是非頭の片隅に入れておいてもらいたい．
-  
-では次に，「ボックスモデル」という考え方を通じて，このdisplay属性が，スタイリングをするうえでどのような意味を持ってくるのかを説明する．
-  
-## ボックスモデル
+　ただし，厄介なこととしては，各タグにはデフォルトで割り当てられるスタイルが決まっているということである．このことによって，見た目上でも意味付けが分かりやすくもなっているとも言えるし，前述のような勘違いを生じさせる要因にもなっていると言える (例えばh1タグには```{ display: block; font-size: 2em; margin: 0.67em 0; font-weight: bold; }```というcssがデフォルトで適用されているし，bタグには```{ font-weight: bold; }```というcssがデフォルトで適用されている). 
+
+　また，このデフォルトのスタイリングのせいで，どうにもスタイリングが思った通りにならないというケースは少なくないと思う (おそらくcssを一度でも書いたことがある人なら，要素の中央揃えに悩まされた経験があると思う)．したがって，スタイリングを行う際には各タグにデフォルトで適用されているcssが何かということを常に念頭に置いておく必要がある．デフォルトのcssの一覧は，[こちらのページ](https://www.w3schools.com/cssref/css_default_values.asp)などに分かりやすくまとめられている．
+ 
+　さて，ではいよいよ，スタイリングについて説明していく．
+
+## ボックスモデルとdisplay属性
+
+## 各display属性の基本的なスタイリング
+
+
+## デフォルトのdisplay属性について
+
+各タグには，「デフォルトのdisplay属性」が設定されている．これをまずはきちんと頭に入れておくことが，スタイリングを学ぶ第一歩となる.
+「コンテンツモデル」の分類に近いようで，いろいろと微妙に異なるので，コンテンツモデルよりも実際に覚えておくべきなのはこちらの分類である．
+
+### display : block がデフォルトのタグ
+```div, p, h1 ~ h6, ol, ul, header, footer, section, form```
+
+### display : inline がデフォルトで，スタイリングが通常のもの
+```(テキスト), b, strong, br, span, a, label```
+
+### display : inline-block がデフォルトのタグ
+```button, input, textarea ```
+
+### display : inline がデフォルトで，スタイリングが特殊のタグ
+```img, video, iframe, canvas```
+
+## 特殊なdisplay属性：flex
+
 
 
 
